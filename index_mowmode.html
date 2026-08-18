@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MowMode 🌱</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;text-align:center;min-height:100vh;overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(103,0,255,.45),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(0,110,255,.35),transparent 30%),
+    radial-gradient(circle at 50% 75%,rgba(0,210,130,.18),transparent 32%),
+    radial-gradient(circle at 75% 90%,rgba(160,0,255,.22),transparent 28%),
+    linear-gradient(135deg,#010008,#09001c 48%,#000814);
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1px),
+    radial-gradient(circle,rgba(255,255,255,.75) 1px,transparent 1px),
+    radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:90px 90px,140px 140px,210px 210px;
+  background-position:10px 20px,50px 80px,120px 40px;
+  opacity:.5;
+}
+header{
+  padding:18px 15px 14px;
+  background:rgba(0,0,0,.62);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.logo{
+  display:block;
+  width:min(360px,92vw);
+  height:auto;
+  margin:0 auto;
+  border-radius:22px;
+}
+.hero{padding:65px 20px;background:rgba(0,0,0,.2)}
+h1{font-size:clamp(34px,8vw,48px);margin-bottom:15px;font-weight:900}
+h1 span{color:#65d51b;text-shadow:0 0 18px rgba(101,213,27,.65)}
+.hero p{
+  max-width:650px;margin:0 auto 30px;color:#ddd;
+  font-size:clamp(17px,4vw,20px);line-height:1.55
+}
+.call-button{
+  display:inline-block;padding:17px 30px;border-radius:14px;
+  background:#55a914;color:#fff;text-decoration:none;
+  font-size:21px;font-weight:800;
+  box-shadow:0 0 22px rgba(85,169,20,.5),0 7px 20px rgba(0,0,0,.35);
+  transition:.2s
+}
+.call-button:hover{transform:scale(1.05);background:#6bd51d}
+.call-button:active{transform:scale(.97)}
+.services{
+  padding:55px 20px;background:rgba(0,0,0,.45);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08)
+}
+.services h2,.contact h2{font-size:clamp(28px,7vw,34px);margin-bottom:28px}
+.cards{
+  display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+  max-width:900px;margin:auto
+}
+.card{
+  width:260px;padding:28px 20px;border-radius:18px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.3)
+}
+.card h3{color:#6bd51d;font-size:22px;margin-bottom:12px}
+.card p{color:#ddd;line-height:1.55}
+.contact{
+  padding:60px 20px;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
+}
+.contact p{color:#ccc;font-size:18px;margin-bottom:18px}
+.phone{
+  color:#72e52a;font-size:clamp(25px,7vw,30px);
+  font-weight:800;text-decoration:none;
+  text-shadow:0 0 15px rgba(114,229,42,.6)
+}
+footer{padding:20px;background:#000;color:#888;font-size:14px}
+@media(max-width:600px){
+  .hero{padding:55px 18px}
+  .card{width:min(330px,90vw)}
+  .logo{width:min(330px,92vw)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="./logo.png" alt="MowMode Lawn Care logo">
+</header>
+
+<section class="hero">
+  <h1>Yo, welcome to <span>MowMode</span> 😎</h1>
+  <p>Need your grass cut? We got you. 🌱 Just hit us up and we'll get it looking fresh.</p>
+  <a class="call-button" href="tel:+16162604530">📞 Hit us up!</a>
+</section>
+
+<section class="services">
+  <h2>What We Can Do</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>🌱 Lawn Mowing</h3>
+      <p>We'll cut that grass and get your yard looking fresh. 🌱</p>
+    </div>
+    <div class="card">
+      <h3>✂️ Lawn Cleanup</h3>
+      <p>Got a messy yard? We'll help clean it up. ✂️</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Fresh Cut</h3>
+      <p>You want that fresh-cut look? Say less. 🔥</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Need a mow?</h2>
+  <p>Hit us up! 👇</p>
+  <a class="phone" href="tel:+16162604530">(616) 260-4530</a>
+</section>
+
+<footer>
+  MowMode 🌱 | Just trying to make lawns look good.
+</footer>
+
+</body>
+</html>
