@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mow Mode 🌱</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(circle at 15% 20%, rgba(100, 80, 255, 0.45), transparent 25%),
+        radial-gradient(circle at 85% 25%, rgba(0, 190, 255, 0.3), transparent 25%),
+        radial-gradient(circle at 50% 85%, rgba(170, 0, 255, 0.3), transparent 30%),
+        linear-gradient(135deg, #020014, #080025, #02000d);
+    }
+
+    /* GALAXY STARS */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+
+      background-image:
+        radial-gradient(2px 2px at 8% 15%, white, transparent),
+        radial-gradient(1px 1px at 18% 70%, white, transparent),
+        radial-gradient(2px 2px at 30% 35%, white, transparent),
+        radial-gradient(1px 1px at 45% 12%, white, transparent),
+        radial-gradient(2px 2px at 57% 78%, white, transparent),
+        radial-gradient(1px 1px at 68% 30%, white, transparent),
+        radial-gradient(2px 2px at 80% 65%, white, transparent),
+        radial-gradient(1px 1px at 92% 20%, white, transparent),
+        radial-gradient(2px 2px at 95% 88%, white, transparent),
+        radial-gradient(1px 1px at 40% 90%, white, transparent);
+
+      background-size: 280px 280px;
+      opacity: 0.8;
+    }
+
+    /* HEADER */
+
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    .logo {
+      width: min(300px, 80vw);
+      max-height: 190px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .fallback {
+      display: none;
+      font-size: 48px;
+      font-weight: 900;
+    }
+
+    .names {
+      font-size: 18px;
+      color: #d9d9f5;
+      margin-top: 8px;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 55px 20px 70px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 10vw, 85px);
+      line-height: 1;
+      font-weight: 1000;
+      letter-spacing: -3px;
+
+      text-shadow:
+        0 0 15px rgba(120, 100, 255, 0.8),
+        0 0 40px rgba(100, 50, 255, 0.5);
+
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-size: clamp(19px, 4vw, 24px);
+      line-height: 1.5;
+      color: #eeeeff;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* BUTTON */
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 17px 32px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 900;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .call {
+      background: #39e75f;
+      color: #061009;
+      box-shadow: 0 0 25px rgba(57, 231, 95, 0.4);
+    }
+
+    /* SECTIONS */
+
+    section {
+      width: min(900px, 92%);
+      margin: 0 auto 60px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: clamp(32px, 7vw, 45px);
+      margin-bottom: 25px;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 28px 20px;
+      text-align: center;
+
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .emoji {
+      font-size: 50px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: #d8d8eb;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      text-align: center;
+      padding: 35px 25px;
+
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 25px;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .about p {
+      color: #e2e2f0;
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin: auto;
+    }
+
+    .about strong {
+      color: #39e75f;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding: 45px 20px;
+
+      background: rgba(57,231,95,0.1);
+      border: 1px solid rgba(57,231,95,0.25);
+      border-radius: 25px;
+    }
+
+    .contact h2 {
+      font-size: clamp(32px, 7vw, 45px);
+      margin-bottom: 12px;
+    }
+
+    .contact p {
+      color: #dddded;
+      font-size: 18px;
+    }
+
+    .phone {
+      display: inline-block;
+      margin-top: 22px;
+
+      font-size: clamp(27px, 7vw, 42px);
+      font-weight: 1000;
+
+      color: #39e75f;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 25px 20px 40px;
+      color: #9999b3;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding-top: 20px;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 25px 20px;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 330px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <img
+      src="logo.png"
+      alt="Mow Mode Logo"
+      class="logo"
+      onerror="
+        this.style.display='none';
+        document.getElementById('fallbackLogo').style.display='block';
+      "
+    >
+
+    <div id="fallbackLogo" class="fallback">
+      🌱 Mow Mode
+    </div>
+
+    <p class="names">
+      Our names are Axel and Sebastian 😎
+    </p>
+
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+
+      <h1>
+        Yo, welcome to Mow Mode 👋
+      </h1>
+
+      <p>
+        Need your grass cut?
+        We got you.
+        We're just trying to make some extra money
+        while making your lawn look nice. 🌱
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="button call"
+          href="tel:+16162604530"
+        >
+          📞 CALL US
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <section>
+
+      <h2 class="title">
+        WHAT WE DO 🌱
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+
+          <div class="emoji">🌱</div>
+
+          <h3>Mow Grass</h3>
+
+          <p>
+            Grass getting way too tall?
+            We'll get it looking fresh again.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="emoji">✂️</div>
+
+          <h3>Trim Edges</h3>
+
+          <p>
+            We'll clean up the edges and
+            make the yard look way better.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="emoji">🧹</div>
+
+          <h3>Clean Up</h3>
+
+          <p>
+            We'll clean up the grass clippings
+            when we're finished.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section>
+
+      <div class="about">
+
+        <h2 class="title">
+          WHY MOW MODE? 😎
+        </h2>
+
+        <p>
+          We're not some huge company.
+          <br><br>
+
+          It's just
+          <strong>Axel and Sebastian.</strong>
+          😂
+          <br><br>
+
+          We're trying to make some money,
+          get some experience, and help people
+          around the neighborhood with their lawns.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section>
+
+      <div class="contact">
+
+        <h2>
+          GOT GRASS? 🌱
+        </h2>
+
+        <p>
+          Give us a call and let's get it looking fresh.
+        </p>
+
+        <a
+          class="phone"
+          href="tel:+16162604530"
+        >
+          📞 (616) 260-4530
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    Mow Mode 🌱<br>
+    Axel & Sebastian 😎
+
+  </footer>
+
+</body>
+</html>
